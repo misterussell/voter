@@ -1,19 +1,31 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
 export default React.createClass({
+  // propTypes : {
+  //   authenticated: PropTypes.bool
+  // },
   render() {
-    return (
-      <div>
+    let nav;
+    { this.props.authenticated ? (
+      nav = (
         <nav className="appNav">
-          <Link to="/register">Sign Up</Link>
-          <Link to="/login">Log In</Link>
+          <Link to='/'>Home</Link>
           <Link to="/search">Search</Link>
           <Link to="/votes">View Votes</Link>
         </nav>
-        // {this.props.children}
-      </div>
-    );
+        )
+      ) : (
+      nav = (
+        <nav className="appNav">
+          <Link to='/'>Home</Link>
+          <Link to="/register">Sign Up</Link>
+          <Link to="/login">Log In</Link>
+        </nav>
+        )
+      );
+    }
+    return <div>{nav}</div>;
   }
 });
 

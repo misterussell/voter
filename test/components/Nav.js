@@ -1,6 +1,8 @@
 import React from 'react';
 import { expect } from 'chai';
 import { shallow } from 'enzyme';
+import TestUtils from 'react-addons-test-utils';
+
 
 import Nav from '../../app/scripts/components/nav';
 
@@ -11,12 +13,10 @@ describe('nav component', () => {
     nav = shallow(<Nav />);
   });
 
-  it('should be a div', () => {
-    expect(nav).to.have.tagName('div');
+  it('should output a nav', () => {
+    expect(nav).to.have.tagName('nav');
   });
 
-  it('should contain a nav', () => {
-    expect(nav).to.have.exactly(1).descendants('nav');
-  });
-
+  //test that correct number of links appear depending on whether
+  //the url is for the login or sign up page
 });
