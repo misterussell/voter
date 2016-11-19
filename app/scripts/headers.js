@@ -4,12 +4,14 @@ import keys from './keys';
 
 export default function(session) {
 
-return $(document).ajaxSend((evt, xhr) => {
-	xhr.setRequestHeader('application-id', keys.appId);
-	xhr.setRequestHeader('secret-key', keys.secret);
-	xhr.setRequestHeader('application-type', 'REST');
-	if (session.get('user-token')) {
-		xhr.setRequestHeader('user-token', session.get('user-token'));
+return $(document).ajaxSend((evt, xhr, settings) => {
+	if ( settings.url === 'https://api.backendless.com' ) {
+		xhr.setRequestHeader('application-id', keys.appId);
+		xhr.setRequestHeader('secret-key', keys.secret);
+		xhr.setRequestHeader('application-type', 'REST');
+		// if (session.get('user-token')) {
+		// 	xhr.setRequestHeader('user-token', session.get('user-token'));
+		// }
 	}
 });
 

@@ -1,23 +1,28 @@
-import $ from 'react';
+import $ from 'jquery';
 import Backbone from 'backbone';
 import router from '../router';
 
 export default Backbone.Model.extend({
   idAttribute: '_id',
-  register(email, password, name) {
-    this.save(
-      {email, password, name},
-      {
-        url: 'https://api.backendless.com/v1/users/register',
-        success: (response) => {
-          this.login(email, password);
-        },
-        error: (response) => {
-          // console.log(response);
-          console.log('User data not saved to server.');
+  register(firstName, lastName, email, password, confirmPW) {
+    if ( password === confirmPW ) {
+      let name = firstName + lastName;
+      this.save(
+        {email, password, name},
+        {
+          url: 'https://api.backendless.com/v1/users/register',
+          success: (response) => {
+            this.login(email, password);
+          },
+          error: (response) => {
+            // console.log(response);
+            console.log('User data not saved to server.');
+          }
         }
-      }
-    );
+      );
+    } else {
+      alert('Passwords do not match');
+    }
   },
   login(email, password) {
     this.save(

@@ -3,7 +3,6 @@ import { expect } from 'chai';
 import { shallow } from 'enzyme';
 import TestUtils from 'react-addons-test-utils';
 
-
 import Nav from '../../app/scripts/components/nav';
 
 describe('nav component', () => {
@@ -14,7 +13,7 @@ describe('nav component', () => {
   });
 
   it('should output a nav', () => {
-    expect(nav).to.have.tagName('nav');
+    expect(nav).to.have.tagName('div');
   });
 
   //test that correct number of links appear depending on whether

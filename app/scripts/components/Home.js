@@ -6,7 +6,7 @@ export default React.createClass({
   render() {
     return (
       <div>
-        <Nav authenticated={false} />
+        <Nav authenticated={true} />
         {this.props.children}
       </div>
     );
