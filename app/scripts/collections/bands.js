@@ -22,13 +22,18 @@ export default Backbone.Collection.extend({
            }
        });
   },
-  vote() {
+  vote(bandName, bandId, bandPicture) {
     //the vote will need to post to the server
     //get the band's id and name and picture and save these
+    this.save(
+      {bandName, bandId, bandPicture},
+      {
+        url: 'https://api.backendless.com/v1/users/register',
 
+      });
   },
   listVotes() {
     //this get request will need to load all band data from the server
-    
+
   }
 });

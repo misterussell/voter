@@ -20,7 +20,8 @@
 			"it": true,
 			"console": true,
 			"before": true,
-			"beforeEach": true
+			"beforeEach": true,
+      "after": true
 		},
     "rules": {
         "linebreak-style": [
