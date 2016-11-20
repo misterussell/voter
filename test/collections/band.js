@@ -11,7 +11,7 @@ describe('bands collection', () => {
 
   before(() => {
     bands = new Bands();
-    xhr = sinon.useFakeXMLRequest();
+    xhr = sinon.useFakeXMLHttpRequest();
     requests = [];
     xhr.onCreate = function(req) { requests.push(req); };
   });
