@@ -2,11 +2,12 @@
 
   - SPA that allows users to vote for specific musicians that they would like to see at a specific venue
 
-  - A
-
 ## Planning
 
 ## Testing
+
+  - Base Requirements: Collection/Model methods
+  - Learning Goal: xhr requests
 
 ## Process
 

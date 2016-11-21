@@ -5,6 +5,7 @@ import SearchItem from './SearchItem';
 export default React.createClass({
   render() {
     let list;
+    console.log(this.props.results);
     { this.props.results[0] === undefined ? (
         list = ''
       ) : (

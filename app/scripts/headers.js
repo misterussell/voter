@@ -11,6 +11,7 @@ return $(document).ajaxSend((evt, xhr, settings) => {
 		settings.url === 'https://api.backendless.com/v1/users/logout' ||
 		settings.url === 'https://api.backendless.com/v1/data/Bands'
 	) {
+		console.log('intercepted');
 		xhr.setRequestHeader('application-id', keys.appId);
 		xhr.setRequestHeader('secret-key', keys.secret);
 		xhr.setRequestHeader('application-type', 'REST');

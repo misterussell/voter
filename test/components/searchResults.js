@@ -14,6 +14,6 @@ describe('search results list', () => {
 
   it('should output an ul', () => {
     expect(list).to.have.tagName('ul');
-  })
+  });
 
 });

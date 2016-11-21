@@ -34,17 +34,13 @@ export default Backbone.Model.extend({
       {
         url: 'https://api.backendless.com/v1/users/login',
         success: (response) => {
-          // console.log(response);
           console.log('Successfuly logged in.');
           window.localStorage.setItem('user-token', response.get('user-token'));
           window.localStorage.setItem('userName', response.get('userName'));
           window.localStorage.setItem('ownerId', response.get('ownerId'));
           store.session.set({authenticated: true});
-          browserHistory.push('#/search');
-
         },
         error: function(response) {
-          // console.log(response);
           alert('Log in not successful. Please try again.');
         }
     });

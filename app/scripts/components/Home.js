@@ -14,9 +14,9 @@ export default React.createClass({
     store.session.on('update change', () => {
       this.setState({authenticated: store.session.get('authenticated')});
     });
+
   },
   render() {
-    console.log(this.state);
     return (
       <div>
         <Nav authenticated={this.state.authenticated} />

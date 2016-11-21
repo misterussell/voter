@@ -6,7 +6,6 @@ export default React.createClass({
   //   authenticated: PropTypes.bool
   // },
   render() {
-    console.log(this.props);
     let nav;
     { this.props.authenticated ? (
       nav = (
@@ -14,6 +13,7 @@ export default React.createClass({
           <Link to='/'>Home</Link>
           <Link to="/search">Search</Link>
           <Link to="/votes">View Votes</Link>
+          <Link to="/logout" onClick={this.handleClick}>Log Out</Link>
         </nav>
         )
       ) : (
@@ -27,7 +27,8 @@ export default React.createClass({
       );
     }
     return <div>{nav}</div>;
+  },
+  handleClick() {
+
   }
 });
-
-// pass in {this.props.children} under nav once components are made
