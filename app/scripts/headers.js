@@ -6,10 +6,11 @@ export default function() {
 
 return $(document).ajaxSend((evt, xhr, settings) => {
 	if (
-		settings.url === 'https://api.backendless.com/v1/users/register' ||
-		settings.url === 'https://api.backendless.com/v1/users/login' ||
-		settings.url === 'https://api.backendless.com/v1/users/logout' ||
-		settings.url === 'https://api.backendless.com/v1/data/Bands'
+		// settings.url === 'https://api.backendless.com/v1/users/register' ||
+		// settings.url === 'https://api.backendless.com/v1/users/login' ||
+		// settings.url === 'https://api.backendless.com/v1/users/logout' ||
+		// settings.url === 'https://api.backendless.com/v1/data/Bands'
+		settings.url.includes('api.backendless')
 	) {
 		console.log('intercepted');
 		xhr.setRequestHeader('application-id', keys.appId);

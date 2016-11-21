@@ -9,29 +9,48 @@ export default Backbone.Collection.extend({
     //the vote will need to post to the server
     //get the band's id and name and picture and save these
     //conditional statement for finding whether a band is already in the system
-    this.fetch();;
-    this.on('update change', () => {
-      this.models.filter((model, i) => {
-        model.get('bandId') === bandId ? (
-          $.ajax({
-            type: 'PUT',
-            url: `https://api.backendless.com/v1/data/Bands/${model.get('objectId')}`
-          })
-        ) : (
-          $.ajax({
-            type: 'POST',
-            url: 'https://api.backendless.com/v1/data/Bands',
-            contentType: 'application/json',
-            data: JSON.stringify({bandName, bandId, bandImage}),
-            success: (response) => {
-              console.log('Vote added.')
-            },
-            error: (response) => {
-              console.log('Error. Not added');
-            }
-          })
-        )
-      });
+    this.fetch({
+      success: (response) => {
+        let votes, duplicate, foundBand;
+        //loops over current data in server to verify if band has already been voted for
+        this.models.forEach((model) => {
+          if (model.get('bandId') === bandId) {
+          votes = Number(model.get('votes'));
+          duplicate = model.get('objectId');
+          foundBand = true;
+          }
+        });
+
+      foundBand ? (
+        votes += 1,
+        $.ajax({
+          type: 'PUT',
+          url: `https://api.backendless.com/v1/data/Bands/${duplicate}`,
+          contentType: 'application/json',
+          data: JSON.stringify({votes: `${votes}`}),
+          success: (response) => {
+            window.console.log('Vote Updated');
+          },
+          error: (response) => {
+            window.console.log('Vote not updated');
+          }
+        })
+      ) : (
+        $.ajax({
+          type: 'POST',
+          url: 'https://api.backendless.com/v1/data/Bands',
+          contentType: 'application/json',
+          data: JSON.stringify({bandName, bandId, bandImage}),
+          success: (response) => {
+            window.console.log('Vote added.')
+            foundBand = false;
+          },
+          error: (response) => {
+            window.console.log('Error. Not added');
+          }
+        })
+      );
+      }
     });
   },
   parse(data) {
