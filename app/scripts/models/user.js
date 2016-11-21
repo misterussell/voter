@@ -1,5 +1,7 @@
 import $ from 'jquery';
 import Backbone from 'backbone';
+import { browserHistory } from 'react-router';
+
 import router from '../router';
 
 import store from '../store';
@@ -26,7 +28,7 @@ export default Backbone.Model.extend({
       alert('Passwords do not match');
     }
   },
-  login(email, password) {
+  login(login, password) {
     this.save(
       {login, password},
       {
@@ -38,7 +40,8 @@ export default Backbone.Model.extend({
           window.localStorage.setItem('userName', response.get('userName'));
           window.localStorage.setItem('ownerId', response.get('ownerId'));
           store.session.set({authenticated: true});
-          router.navigate('feed', {trigger: true});
+          browserHistory.push('#/search');
+
         },
         error: function(response) {
           // console.log(response);
@@ -52,7 +55,7 @@ export default Backbone.Model.extend({
 			success: () => {
 				this.clear();
 				window.localStorage.clear();
-        router.navigate('', {trigger: true});
+        store.session.set({authenticated: false});
 			}
 		});
   }

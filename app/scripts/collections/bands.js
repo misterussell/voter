@@ -22,15 +22,31 @@ export default Backbone.Collection.extend({
            }
        });
   },
-  vote(bandName, bandId, bandPicture) {
+  vote(bandName, bandId, bandImage) {
     //the vote will need to post to the server
     //get the band's id and name and picture and save these
-    this.save(
-      {bandName, bandId, bandPicture},
-      {
-        url: 'https://api.backendless.com/v1/users/register',
-
-      });
+    console.log(bandName, bandId, bandImage);
+    $.ajax({
+      type: 'POST',
+      url: 'https://api.backendless.com/v1/data/Bands',
+      contentType: 'application/json',
+      data: JSON.stringify({bandName, bandId, bandImage}),
+      success: (response) => {
+        console.log('Vote added.')
+      },
+      error: (response) => {
+        console.log('Error. Not added');
+      }
+    });
+    // this.set(
+    //   {bandName, bandId, bandImage},
+    //   {
+    //     url: 'https://api.backendless.com/v1/data/Bands',
+    //     success: (response) => {
+    //       console.log('added to collection');
+    //     }
+    //   }
+    // );
   },
   listVotes() {
     //this get request will need to load all band data from the server

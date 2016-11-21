@@ -6,6 +6,7 @@ export default React.createClass({
   //   authenticated: PropTypes.bool
   // },
   render() {
+    console.log(this.props);
     let nav;
     { this.props.authenticated ? (
       nav = (

@@ -15,7 +15,9 @@ export default React.createClass({
     );
   },
   vote() {
-    console.log('testing button callback');
-    store.bands.vote();
+    let bandName = this.props.info.name;
+    let bandId = this.props.info.id;
+    let image = this.props.info.images[0].url;
+    store.bands.vote(bandName, bandId, image);
   }
 });
