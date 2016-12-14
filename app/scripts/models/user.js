@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import Backbone from 'backbone';
-import { browserHistory } from 'react-router';
+import { hashHistory } from 'react-router';
 
 import router from '../router';
 
@@ -19,7 +19,6 @@ export default Backbone.Model.extend({
             this.login(email, password);
           },
           error: (response) => {
-            // console.log(response);
             console.log('User data not saved to server.');
           }
         }
@@ -39,6 +38,7 @@ export default Backbone.Model.extend({
           window.localStorage.setItem('userName', response.get('userName'));
           window.localStorage.setItem('ownerId', response.get('ownerId'));
           store.session.set({authenticated: true});
+          hashHistory.push('search');
         },
         error: function(response) {
           alert('Log in not successful. Please try again.');

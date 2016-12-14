@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
+import store from '../store';
+
 export default React.createClass({
   // propTypes : {
   //   authenticated: PropTypes.bool
@@ -13,7 +15,7 @@ export default React.createClass({
           <Link to='/'>Home</Link>
           <Link to="/search">Search</Link>
           <Link to="/votes">View Votes</Link>
-          <Link to="/logout" onClick={this.handleClick}>Log Out</Link>
+          <Link to="/" onClick={this.handleLogout}>Log Out</Link>
         </nav>
         )
       ) : (
@@ -28,7 +30,8 @@ export default React.createClass({
     }
     return <div>{nav}</div>;
   },
-  handleClick() {
-
+  handleLogout(e) {
+    e.preventDefault();
+    store.user.logout();
   }
 });

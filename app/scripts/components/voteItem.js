@@ -8,7 +8,7 @@ export default React.createClass({
       <li>
       <h3 className="band-title">{this.props.info.bandName}</h3>
         {image}
-      <h4>Votes to go here</h4>
+      <h4>Votes: {this.props.info.votes}</h4>
       </li>
     );
   }

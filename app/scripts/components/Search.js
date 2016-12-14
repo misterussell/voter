@@ -21,7 +21,7 @@ export default React.createClass({
       <div className="search-box">
       <form className="search" onSubmit={this.handleSubmit}>
         <input type="text" ref="search" id="search" />
-        <input type="submit" id="submit" value="Submit" />
+        <input type="submit" id="submit" value="Search Artist" />
       </form>
       <SearchResults results={this.state.bands}/>
       </div>

@@ -19,17 +19,14 @@ export default React.createClass({
   render() {
     let list;
     this.state.bandVotes.length === 0 ? (
-        // console.log('a test'),
         list = []
       ) : (
-        // console.log('b test')
         list = this.state.bandVotes.map((band, i) => {
-        // list = Object.keys(this.state.bandVotes[0]).map((band, i) => {
           return <VoteItem key={i} info={band}/>;
         })
       );
     return (
-      <ul>
+      <ul className="votes">
         {list}
       </ul>
     );

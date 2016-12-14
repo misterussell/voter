@@ -8,7 +8,7 @@ export default React.createClass({
   render() {
     let image = null;
     if (this.props.info.images.length > 0) {
-      image = <img src={this.props.info.images[0].url} width="100px" height="100px"/>;
+      image = <img src={this.props.info.images[0].url} />;
     }
     return (
       <li>

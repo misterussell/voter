@@ -5,22 +5,15 @@ import keys from './keys';
 export default function() {
 
 return $(document).ajaxSend((evt, xhr, settings) => {
-	if (
-		// settings.url === 'https://api.backendless.com/v1/users/register' ||
-		// settings.url === 'https://api.backendless.com/v1/users/login' ||
-		// settings.url === 'https://api.backendless.com/v1/users/logout' ||
-		// settings.url === 'https://api.backendless.com/v1/data/Bands'
-		settings.url.includes('api.backendless')
-	) {
-		console.log('intercepted');
+	if ( settings.url.includes('api.backendless')) {
+		// console.log('intercepted');
 		xhr.setRequestHeader('application-id', keys.appId);
 		xhr.setRequestHeader('secret-key', keys.secret);
 		xhr.setRequestHeader('application-type', 'REST');
-		// if (session.get('user-token')) {
+		// reauth with localStorage if user has navigated away but not logged out
 		if (window.localStorage['user-token']) {
 			xhr.setRequestHeader('user-token', window.localStorage['user-token']);
 		}
 	}
 });
-
 }

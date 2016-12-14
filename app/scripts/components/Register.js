@@ -6,18 +6,18 @@ export default React.createClass({
   render() {
     return (
       <form className="login-signup" onSubmit={this.handleSubmit}>
-        <input type="text" ref="firstName" id="first-name" placeholder="First Name" />
-        <input type="text" ref="lastName" id="last-name" placeholder="Last Name" />
-        <input type="email" ref="email" id="email" placeholder="Email" />
-        <input type="password" ref="pw" id="pw" placeholder="******" />
-        <input type="password" ref="confirmPW" id="confirm-pw" placeholder="******" />
+        <input type="text" ref="firstName" className="new-form-input" id="first-name" placeholder="First Name" />
+        <input type="text" ref="lastName" className="new-form-input" id="last-name" placeholder="Last Name" />
+        <input type="email" ref="email" className="new-form-input" id="email" placeholder="Email" />
+        <input type="password" ref="pw" className="new-form-input" id="pw" placeholder="Password" />
+        <input type="password" ref="confirmPW" className="new-form-input" id="confirm-pw" placeholder="Confirm Password" />
         <input type="submit" id="submit" value="Submit" />
       </form>
     );
   },
   handleSubmit(e) {
     e.preventDefault();
-    let firstName = this.refs.irstName.value;
+    let firstName = this.refs.firstName.value;
     let lastName = this.refs.lastName.value;
     let email = this.refs.email.value;
     let password = this.refs.pw.value;

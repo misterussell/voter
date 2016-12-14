@@ -6,10 +6,13 @@
     box-sizing: border-box;
     display: inline-block;
     width: 15rem;
-    padding: 1rem 5rem;
+    padding: 1rem 2rem;
 
-    background: $color-secondary-1-1;
+    background: $color-secondary-2-2;
     color: black;
+    font-family: $font-header;
+    font-size: 1rem;
+    letter-spacing: .2rem;
   }
 
 }

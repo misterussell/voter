@@ -1,0 +1,18 @@
+.votes {
+
+  li {
+    width: 40%;
+    display: inline-block;
+    font-family: $font-main;
+    background: $color-secondary-2-2;
+    margin: 1%;
+
+    h3, h4 {
+      font-family: $font-header;
+      font-size: 1rem;
+      letter-spacing: .2rem;
+    }
+
+  }
+
+}

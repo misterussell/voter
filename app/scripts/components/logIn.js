@@ -6,9 +6,9 @@ export default React.createClass({
   render() {
     return (
       <form className="login-signup" onSubmit={this.handleSubmit}>
-        <input type="email" ref="email" id="email" placeholder="Email" />
-        <input type="password" ref="pw" id="pw" />
-        <input type="submit" name="submit" value="Submit" />
+        <input type="email" ref="email" className="new-form-input" id="email" placeholder="Email" />
+        <input type="password" ref="pw" className="new-form-input" id="pw" placeholder="Password" />
+        <input type="submit" id="submit" name="submit" value="Submit" />
       </form>
     );
   },

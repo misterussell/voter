@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import Backbone from 'backbone';
 import Band from '../models/band';
+import { hashHistory } from 'react-router';
 
 export default Backbone.Collection.extend({
   model: Band,
@@ -30,6 +31,7 @@ export default Backbone.Collection.extend({
           data: JSON.stringify({votes: `${votes}`}),
           success: (response) => {
             window.console.log('Vote Updated');
+            hashHistory.push('votes');
           },
           error: (response) => {
             window.console.log('Vote not updated');
